@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type it</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        .hover:hover {
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+            background-color: chartreuse;
+            color: black;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <!-- logo image block -->
+    <div class="container-fluid row p-4">
+        <div class="col-6 d-flex flex-row">
+            <img src="https://via.placeholder.com/50" class="circle rounded-circle ml-4 d-block" alt="logo">
+            <h3>Type it</h3>
+        </div>
+
+        <div class="col-6 ">
+            <button type="button" class="btn float-right hover btn-primary">Show Leaderboards</button>
+        </div>
+
+    </div>
+
+
+    <!-- timer section block -->
+    <div class="container" id="cont">
+        
+        <div class="row text-center m-5"></div>
+        <div class="row mt-2">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 text-center ">
+                <h3>"Typeit" is a comprehensive typing game which gives detailed analysis on your
+                    typing speed and
+                    accuracy.</h3>
+                <div class="row mt-3 border-bottom"></div>
+                <h4 class="mt-2">Start typing now</h4>
+                <i class="fa fa-hand-o-down display-4 text-warning" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+        <div class="row text-center mt-4">
+            <div class="col-1 ml-3"></div>
+            <div class="col-lg-3 m-2 text-center">
+                <button id="sec30" value="30" class="btn btn-primary hover btn-lg btn-block rounded-pill"
+                    role="button" name="1">30 Seconds</button>
+            </div>
+            <div class="col-lg-3 m-2 text-center">
+                <button id="min1" value="60" class="btn btn-primary btn-lg  hover btn-block rounded-pill"
+                    role="button" name="1">1 Minute</button>
+            </div>
+
+            <div class="col-lg-3 m-2 text-center">
+                <button id="min2" value="120" class="btn btn-primary btn-lg hover  btn-block rounded-pill"
+                    role="button" name="1">2 Minute</button>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+
+
+    <!-- footer block -->
+    <script type="text/javascript" src="index.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

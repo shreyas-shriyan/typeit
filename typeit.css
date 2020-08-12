@@ -1,0 +1,56 @@
+#timer{
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    font-family: 'Sniglet', cursive;
+    padding-right: 25px;
+}
+
+#container{
+    text-align: center;
+    background-color: white;
+    width: 70%;
+    border-radius: 9px;
+    margin: 4% auto;
+}
+
+#paragraph{
+    font-size: 25px;
+    padding: 20px;
+}
+
+#user_text{
+    width: 80%;
+    font-size: 25px;
+    background-color: transparent;
+    border: 2px solid darkgoldenrod;
+    outline: none;
+    border-radius: 9px;
+}
+
+#user_text:focus {
+    border-color: black;
+}
+
+.utilities{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#wpm{
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    font-family: 'Sniglet', cursive;
+    padding-left: 25px;
+}
+
+.correct{
+    color: blue;
+}
+
+.incorrect{
+    color: red;
+}
+
