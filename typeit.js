@@ -83,7 +83,6 @@ function wpm_timer(){
         }
         update_wpm()
         update_accuracy()
-
     },1000)
 }
 
@@ -94,7 +93,7 @@ function update_wpm(){
     current_time = current_time.split(" ")[2]
     let elapsed_time = time-current_time
     let text = user_text_element.value
-    let words = text.length/5
+    let words = text.length/9
     let temp = Math.floor((120*words)/elapsed_time)
 
     if(wpm_counter==0 || temp==NaN){

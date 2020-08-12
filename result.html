@@ -13,7 +13,7 @@
 
 <body>
 
-    <canvas id="chart">
+    <canvas id="chart" height="70px">
 
     </canvas>
 
@@ -22,7 +22,7 @@
         window.addEventListener("load", function () {
             ctx = document.getElementById("chart")
             var myPieChart = new Chart(ctx, {
-                type: 'pie',
+                type: 'doughnut',
                 data: {
                     datasets: [{
                         data: [90, 10],
