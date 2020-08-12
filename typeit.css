@@ -3,7 +3,14 @@
     color: white;
     text-align: center;
     font-family: 'Sniglet', cursive;
-    padding-right: 25px;
+    padding-right: 30px;
+}
+
+#accuracy{
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    font-family: 'Sniglet', cursive;
 }
 
 #container{
@@ -43,7 +50,7 @@
     color: white;
     text-align: center;
     font-family: 'Sniglet', cursive;
-    padding-left: 25px;
+    padding-right: 30px;
 }
 
 .correct{
