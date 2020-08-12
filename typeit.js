@@ -1,11 +1,14 @@
-// alert("typeit..")
-//  const RANDOM_TEXT_URL = `http://www.randomtext.me/#/lorem/p-1/6-10`
+
 const RANDOM_TEXT_URL = 'http://api.quotable.io/random'
 // const RANDOM_TEXT_URL = `http://www.randomtext.me/api/lorem/p-1/6-10`
+
+let query = new URLSearchParams(window.location.search)
+let time = query.get('time')
 
 const paragraph_display_element = document.getElementById('paragraph')
 const user_text_element = document.getElementById('user_text')
 const timer_element = document.getElementById('timer')
+const wpm_text = document.getElementById("wpm")
 
 user_text_element.addEventListener("input", ()=> {
     const array_of_para = paragraph_display_element.querySelectorAll("span")
@@ -14,8 +17,6 @@ user_text_element.addEventListener("input", ()=> {
     let correct = true
     array_of_para.forEach((character_span, index) => {
         const character = array_of_usertext[index]
-        console.log(character,index)
-        // console.log(index)
 
         if( character == null ) {
             character_span.classList.remove("correct")
@@ -38,21 +39,18 @@ user_text_element.addEventListener("input", ()=> {
 })
 
 function get_random_text() {
-    // response = 
     return fetch(RANDOM_TEXT_URL)
     .then((res)=>res.json())
     .then(data => data.content)
 }
 
 function time_converter (){
-    let query = new URLSearchParams(window.location.search)
-    let time = query.get('time')
-    time = time/30
-    return time
+    let temp = time/30
+    return temp
 }
 
 async function render_new_text() {
-    let text = ""
+    let text = "" 
     let minutes = time_converter()
     let accumulator = minutes * 2
     
@@ -70,31 +68,38 @@ async function render_new_text() {
     start_timer()
 }
 
-
-function wpm (){
-    let user_text = user_text_element.value
-    console.log(user_text)
-}
-
 function wpm_timer(){
     let temp = setInterval(()=>{
         if(count==1){
             clearInterval(temp)
         }
         update_wpm()
-    },2000)
+    },1000)
 }
 
 function update_wpm(){
-    let time = timer_element
+    let current_time = timer_element.innerHTML
+    current_time = current_time.split(" ")[2]
+    let elapsed_time = time-current_time
+    let text = user_text_element.value
+    let words = text.length/5
+    let temp = Math.floor((120*words)/elapsed_time)
+    console.log(temp)
+    if(temp==NaN){
+        console.log("hello")
+        wpm_text.innerHTML = `WPM : 0`
+    }
+    else{
+        wpm_text.innerHTML = `WPM : ${temp}`
+    }
+    
 }
 
 let start_time;
-let count =20
+let count = time
 function start_timer() {
     timer_element.innerText = null
     let temp = setInterval(() => {
-        console.log(count)
         if(count==1){
             clearInterval(temp)
             after_time_out()
@@ -113,5 +118,5 @@ function get_timer_time(time) {
 }
 
 render_new_text()
-
+wpm_timer()
 
