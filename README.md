@@ -6,7 +6,7 @@
 ### Typing page:
 ![alt text](https://github.com/shreyas-shriyan/cdn/blob/master/typing.png)
 ### Result page:
-![alt text](https://github.com/shreyas-shriyan/cdn/blob/master/result.png)
+![alt text](https://github.com/shreyas-shriyan/cdn/blob/master/result1.png)
 ### What's working:
 - All pages
 - Realtime word per minute
