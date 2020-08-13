@@ -5,65 +5,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Type it</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <style>
         .hover:hover {
             box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-            background-color: chartreuse;
+            /* background-color: chartreuse; */
+            background-color: mediumspringgreen ;
             color: black;
+        }
+
+        .bgcolor {
+            background-color: #63718a;
         }
     </style>
 </head>
 
-<body class="bg-light">
+<body class="bg-light" style="background-image: url(back.png)">
 
     <!-- logo image block -->
-    <div class="container-fluid row p-4">
-        <div class="col-6 d-flex flex-row">
-            <img src="https://via.placeholder.com/50" class="circle rounded-circle ml-4 d-block" alt="logo">
-            <h3 class="p-2">Type it</h3>
-        </div>
+    <div class="container-fluid p-2">
+        <div class="row">
+            <div class="col-6 d-flex flex-row">
 
-        <div class="col-6 p-1">
-            <button type="button" class="btn p-2 float-right hover btn-primary">Show Leaderboards</button>
+                <h3 class="p-2 text-white ml-5 mt-3" style="font-size: 35px; font-weight: 900; font-family: 'Montserrat', sans-serif;">Type it</h3>
+            </div>
+    
+            <div class="col-6 p-1">
+                <button type="button" class="btn p-2 mr-5 mt-4 rounded-pill pl-4 pr-4 float-right shadow-lg hover btn-primary">Show Leaderboards</button>
+            </div>    
         </div>
-
     </div>
 
 
     <!-- timer section block -->
     <div class="container" id="cont">
         
-        <div class="row text-center m-5"></div>
-        <div class="row mt-2">
-            <div class="col-md-3"></div>
-            <div class="col-md-6 text-center ">
-                <h3>"Typeit" is a comprehensive typing game which gives detailed analysis on your
+        <div class="row text-center">
+            <img style="height: 200px;" class="mx-auto" src="typing.png">
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-lg-1"></div>
+            <div class="col-md-8 col-lg-10 text-center ">
+                <h3 class="text-white" style="font-size: 35px; font-weight: 500; font-family: 'Montserrat', sans-serif;">"Typeit" is a comprehensive typing game which gives detailed analysis on your
                     typing speed and
                     accuracy.</h3>
                 <div class="row mt-3 border-bottom"></div>
-                <h4 class="mt-2">Start typing now</h4>
+                <h4 class="mt-3 text-white" style="font-size: 30px; font-weight: 500; font-family: 'Montserrat', sans-serif;">Start typing now</h4>
                 <i class="fa fa-hand-o-down display-4 text-warning" aria-hidden="true"></i>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-md-2 col-lg-1"></div>
         </div>
 
         <div class="row text-center mt-4">
             <div class="col-1 ml-3"></div>
             <div class="col-lg-3 m-2 text-center">
-                <button id="sec30" value="30" class="btn btn-primary hover btn-lg btn-block rounded-pill"
+                <button id="sec30" value="30" class="btn btn-light hover btn-lg shadow-lg btn-block rounded-pill"
                     role="button" name="1">30 Seconds</button>
             </div>
             <div class="col-lg-3 m-2 text-center">
-                <button id="min1" value="60" class="btn btn-primary btn-lg  hover btn-block rounded-pill"
+                <button id="min1" value="60" class="btn btn-light btn-lg  hover shadow-lg btn-block rounded-pill"
                     role="button" name="1">1 Minute</button>
             </div>
 
             <div class="col-lg-3 m-2 text-center">
-                <button id="min2" value="120" class="btn btn-primary btn-lg hover  btn-block rounded-pill"
-                    role="button" name="1">2 Minute</button>
+                <button id="min2" value="120" class="btn btn-light btn-lg hover shadow-lg  btn-block rounded-pill"
+                    role="button" name="1">2 Minutes</button>
             </div>
             <div class="col-1"></div>
         </div>

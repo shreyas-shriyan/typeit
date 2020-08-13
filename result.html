@@ -1,43 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Title</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <style>
+      .hover:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+          0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        background-color: chartreuse;
+        color: black;
+      }
 
-</head>
+      .bgcolor {
+        background-color: #63718a;
+      }
+    </style>
+  </head>
 
-<body>
+  <body>
+    <!-- logo image block -->
+    <div class="container-fluid bgcolor p-2">
+      <div class="row">
+        <div class="col-6 d-flex flex-row">
+          <img
+            src="https://via.placeholder.com/50"
+            class="circle rounded-circle ml-4 d-block"
+            alt="logo"
+          />
+          <h3 class="p-2 text-white">Type it</h3>
+        </div>
 
-    <canvas id="chart" height="70px">
+        <div class="col-6 p-1">
+          <a
+            href="index.html"
+            class="btn p-2 mr-5 pl-4 pr-4 float-right hover btn-primary"
+            role="button"
+            aria-pressed="true"
+            >Home</a>
+        </div>
+      </div>
+    </div>
 
-    </canvas>
+    <!-- chart show block -->
+    <div class="row mt-5">
+      <div class="col text-center">
+        <h3 class="mb-3">Performance</h3>
+        <p id="accuracy"></p>
+        <p id="wpm"></p>
+      </div>
+      <div class="col text-center">
+        <h3 class="mb-3">Performance Chart</h3>
+        <canvas id="chart" height="140px"> </canvas>
+      </div>
+    </div>
 
+
+    <!-- JAVA SCRIPT BLOCK -->
     <script type="text/javascript">
-        var ctx, chart
-        window.addEventListener("load", function () {
-            ctx = document.getElementById("chart")
-            var myPieChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    datasets: [{
-                        data: [90, 10],
-                        backgroundColor: ['green','red']
-                    }],
-                    labels: ['correct', 'wrong']
-                },
-                options: Chart.defaults.doughnut
-            });
+      var ctx, chart;
+      window.addEventListener("load", function () {
+        let query = window.location.search;
+        if (query !== "") {
+          loadUrlDetail(query);
+        }
 
-        })
+        ctx = document.getElementById("chart");
+        var myPieChart = new Chart(ctx, {
+          type: "doughnut",
+          data: {
+            datasets: [
+              {
+                data: [90, 10],
+                backgroundColor: ["green", "red"],
+              },
+            ],
+            labels: ["correct", "wrong"],
+          },
+          options: Chart.defaults.doughnut,
+        });
+      });
+
+      function loadUrlDetail(query) {
+            let url = new URLSearchParams(query)
+            let accuracy = url.get("accuracy")
+            let accu = document.getElementById('accuracy')
+            accu.textContent = accuracy+"%"
+
+            let wpm = url.get("wpm")
+            let word = document.getElementById('wpm')
+            word.textContent = wpm + " word per Minute"
+        }
     </script>
 
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-</body>
-
+  </body>
 </html>

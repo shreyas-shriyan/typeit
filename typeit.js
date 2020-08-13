@@ -28,13 +28,21 @@ user_text_element.addEventListener("input", ()=> {
             correct = false
         }
         else if(character == character_span.innerText) {
+            //correct_sound.play()
             character_span.classList.add("correct")
             character_span.classList.remove("incorrect")
         }
         else {
+            //wrong_sound.play()
             character_span.classList.remove("correct")
             character_span.classList.add("incorrect")
             correct = false
+        }
+        if(character == character_span.innerText){
+            correct_sound.play()
+        }
+        else{
+            wrong_sound.play()
         }
     })
     if(correct) {
@@ -95,6 +103,9 @@ function update_wpm(){
     let text = user_text_element.value
     let words = text.length/9
     let temp = Math.floor((120*words)/elapsed_time)
+    if(elapsed_time%5==0){
+        console.log(`elapsed time : ${elapsed_time} temp: ${temp}`)
+    }
 
     if(wpm_counter==0 || temp==NaN){
         console.log("hello")
@@ -121,7 +132,7 @@ function start_timer() {
 
 function after_time_out(){
     let final_accuracy = accuracy_text.innerHTML
-    final_accuracy = final_accuracy.split("")
+    final_accuracy = final_accuracy.split(" ")[2].split("%")[0]
     let final_wpm = wpm_text.innerHTML
     let query = new URLSearchParams(window.location.search)
     query.set('accuracy',final_accuracy)
@@ -162,3 +173,32 @@ function update_accuracy(){
     }
     acc_counter++
 }
+
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+      this.sound.play();
+    }
+    this.stop = function(){
+      this.sound.pause();
+    }
+}
+
+var correct_sound;
+var wrong_sound;
+
+function correct_key() {
+    correct_sound = new sound("click.mp3");
+}
+
+function wrong_key(){
+    wrong_sound = new sound("error.mp3");
+}
+
+correct_key()
+wrong_key()
