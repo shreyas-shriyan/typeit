@@ -1,5 +1,5 @@
 
-const RANDOM_TEXT_URL = 'http://api.quotable.io/random' // Api for Fetching Data
+const RANDOM_TEXT_URL = 'http://quotes.stormconsultancy.co.uk/random.json' // Api for Fetching Data
 
 let query = new URLSearchParams(window.location.search)
 let time = query.get('time')
@@ -49,7 +49,10 @@ user_text_element.addEventListener("input", ()=> {
 function get_random_text() {
     return fetch(RANDOM_TEXT_URL)
     .then((res)=>res.json())
-    .then(data => data.content)
+    .then(data => data.quote)
+    /* .then(function(data){
+        console.log(typeof(data.quote))
+    }) */
 }
 
 function time_converter (){
@@ -61,7 +64,7 @@ let api_text = []
 async function render_new_text() {
     let text = "" 
     let minutes = time_converter()
-    let accumulator = minutes * 2
+    let accumulator = minutes
     
     for(let i=0;i<accumulator;i++){
         text = text + await get_random_text() + " "
