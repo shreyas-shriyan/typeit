@@ -14,6 +14,7 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <style>
       .hover:hover {
         box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
@@ -28,82 +29,128 @@
     </style>
   </head>
 
-  <body>
+  <body style="background-image: url(back.png); color: white;">
     <!-- logo image block -->
-    <div class="container-fluid bgcolor p-2">
-      <div class="row">
-        <div class="col-6 d-flex flex-row">
-          <img
-            src="https://via.placeholder.com/50"
-            class="circle rounded-circle ml-4 d-block"
-            alt="logo"
-          />
-          <h3 class="p-2 text-white">Type it</h3>
-        </div>
+    <div class="container-fluid px-5">
+        <div class="row">
+            <div class="col-6 d-flex flex-row">
 
-        <div class="col-6 p-1">
-          <a
-            href="index.html"
-            class="btn p-2 mr-5 pl-4 pr-4 float-right hover btn-primary"
-            role="button"
-            aria-pressed="true"
-            >Home</a>
+                <h3 class="p-2 text-white ml-5 mt-3" style="font-size: 35px; font-weight: 900; font-family: 'Montserrat', sans-serif;">Type it</h3>
+            </div>
+    
+            <div class="col-6 p-1">
+                <button id="home" type="button" class="btn p-2 mr-5 mt-4 rounded-pill pl-4 pr-4 float-right shadow-lg hover btn-primary">Home</button>
+            </div>    
         </div>
-      </div>
     </div>
 
     <!-- chart show block -->
     <div class="row mt-5">
-      <div class="col text-center">
-        <h3 class="mb-3">Performance</h3>
-        <p id="accuracy"></p>
-        <p id="wpm"></p>
+      <div class="col text-center ml-4">
+        <!-- <h3 class="mb-3">Performance</h3> -->
+        <div style="margin-top: 100px;font-family: 'Montserrat', sans-serif;" >
+          <h3 style="font-family: 'Montserrat', sans-serif;">Your typing speed is:</h3>
+        </div>
+        <div>
+          <h1 class="mt-4" style =" font-family: 'Montserrat', sans-serif;" id="wpm"></h1>
+        </div>
+       
       </div>
       <div class="col text-center">
-        <h3 class="mb-3">Performance Chart</h3>
+        <h3 id="accuracy" style="font-family: 'Montserrat', sans-serif;" class="mb-3">Accuracy</h3>
         <canvas id="chart" height="140px"> </canvas>
       </div>
     </div>
 
+    <h3 class="mt-4" style="text-align: center;font-family: 'Montserrat', sans-serif;">Typing speed Analysis</h3>
+    <div style="width: 700px; height: 700px;" class="row mx-auto">
+      <canvas id="barchart"></canvas>
+    </div>
 
     <!-- JAVA SCRIPT BLOCK -->
     <script type="text/javascript">
       var ctx, chart;
+      let query = new URLSearchParams(window.location.search)
+        let accuracy = query.get('accuracy')
+       
       window.addEventListener("load", function () {
         let query = window.location.search;
         if (query !== "") {
           loadUrlDetail(query);
         }
+        console.log(accuracy)
+         ctx2=document.getElementById("barchart")                        
+         chart = new Chart(ctx2, option2)                             
 
         ctx = document.getElementById("chart");
+        
         var myPieChart = new Chart(ctx, {
           type: "doughnut",
           data: {
             datasets: [
               {
-                data: [90, 10],
-                backgroundColor: ["green", "red"],
+                data: [accuracy, 100-accuracy],
+                backgroundColor: ["#1f5ff2", "red"],
+                borderWidth: 0,
               },
             ],
             labels: ["correct", "wrong"],
           },
-          options: Chart.defaults.doughnut,
+          options: Chart.defaults.doughnut
         });
       });
-
+      
       function loadUrlDetail(query) {
             let url = new URLSearchParams(query)
             let accuracy = url.get("accuracy")
             let accu = document.getElementById('accuracy')
-            accu.textContent = accuracy+"%"
+            accu.textContent = `Accuracy : ${accuracy}%`
 
             let wpm = url.get("wpm")
+           // console.log(wpm.substr(6,9))
             let word = document.getElementById('wpm')
-            word.textContent = wpm + " word per Minute"
+            word.textContent = wpm.substr(6,9) + " words per Minute"
         }
+
+      let bar_data = JSON.parse(localStorage.getItem("wpm_data"))
+      console.log(bar_data)
+       let ctx2;    
+         const option2= {            
+             type: "bar",
+             data: {
+                 labels: bar_data.time,
+                 datasets: [
+                     {
+                         label: "Words Per Min",
+                         data: bar_data.wpm,
+                         // backgroundColor: "rgb(200,50,100)",
+                         backgroundColor: "#0275d8",
+                     },
+                 ],
+             },
+               options: {
+                 scales: {
+                     yAxes: [
+                         {
+                           ticks: {
+                                 beginAtZero: true
+                             }
+                         }
+                     ]
+                }
+            }
+        }
+
+        
     </script>
 
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-  </body>
-</html>
+    <script type="text/javascript">
+        let home = document.getElementById("home")
+        home.addEventListener("click",function(){
+            window.location.href = "index.html"
+        })
+    </script>
+       <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+     </body>
+   </html>

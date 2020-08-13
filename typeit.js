@@ -28,22 +28,17 @@ user_text_element.addEventListener("input", ()=> {
             correct = false
         }
         else if(character == character_span.innerText) {
-            //correct_sound.play()
+            correct_sound.play()
             character_span.classList.add("correct")
             character_span.classList.remove("incorrect")
         }
         else {
-            //wrong_sound.play()
+            wrong_sound.play()
             character_span.classList.remove("correct")
             character_span.classList.add("incorrect")
             correct = false
         }
-        if(character == character_span.innerText){
-            correct_sound.play()
-        }
-        else{
-            wrong_sound.play()
-        }
+        
     })
     if(correct) {
         render_new_text()    // After finishing 
@@ -94,7 +89,10 @@ function wpm_timer(){
     },1000)
 }
 
-let wpm_counter = 0
+let wpm_counter = 0                                               //
+let wpm = []                                                      //
+let times = []                                                    // 
+let wpm_data = {wpm: wpm, time: times}                            //
 
 function update_wpm(){
     let current_time = timer_element.innerHTML
@@ -103,9 +101,13 @@ function update_wpm(){
     let text = user_text_element.value
     let words = text.length/9
     let temp = Math.floor((120*words)/elapsed_time)
-    if(elapsed_time%5==0){
-        console.log(`elapsed time : ${elapsed_time} temp: ${temp}`)
-    }
+
+    if(elapsed_time!==30 && elapsed_time%5==0){                    //
+        wpm.push(temp)                                             //
+        times.push(elapsed_time)                                   //
+        localStorage.setItem("wpm_data", JSON.stringify(wpm_data)) //
+    }     
+
 
     if(wpm_counter==0 || temp==NaN){
         console.log("hello")
@@ -202,3 +204,8 @@ function wrong_key(){
 
 correct_key()
 wrong_key()
+
+let restart = document.getElementById("restart")
+restart.addEventListener("click",function(){
+    window.location.href = `typeit.html?time=${time}`
+})

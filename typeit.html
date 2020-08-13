@@ -8,11 +8,21 @@
         <title>typeit</title> 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
         <link href="typeit.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     </head>
 
     <body style="background-color: blue; background-image: url(back.png)">
 
-        <h1 style="margin-left: 10%; margin-top: 20px; color: white; font-size: 38px; font-family: 'Montserrat', sans-serif;">Type_it</h1>
+        <div class="row">
+            <div class="col-6 d-flex flex-row">
+
+                <h3 class="p-2 text-white ml-5 mt-3" style="font-size: 35px; font-weight: 900; font-family: 'Montserrat', sans-serif;">Type it</h3>
+            </div>
+    
+            <div class="col-6 p-1">
+                <button id="restart" type="button" class="btn pr-4 mr-5 mt-4 rounded-pill pl-4 pr-4 float-right shadow-lg hover btn-primary">Restart</button>
+            </div>    
+        </div>
         
         <div class="utilities">
             <div class="timer" id="timer">Timer : 00</div>
