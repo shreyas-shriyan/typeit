@@ -1,5 +1,5 @@
 
-const RANDOM_TEXT_URL = 'https://quotes.stormconsultancy.co.uk/random.json' // Api for Fetching Data
+const RANDOM_TEXT_URL = 'http://quotes.stormconsultancy.co.uk/random.json' // Api for Fetching Data
 
 let query = new URLSearchParams(window.location.search)
 let time = query.get('time')
